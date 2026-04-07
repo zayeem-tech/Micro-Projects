@@ -6,18 +6,16 @@ import tkinter as tk
 root = tk.Tk()
 root.title('Image Slideshow Viewer')
 
-iamge_paths = [
-    r'C:\Users\syedz\Documents\Micro Projects\Slideshow Viewer\images\dp.jpeg',
-    r'C:\Users\syedz\Documents\Micro Projects\Slideshow Viewer\images\football.jpg',
-    r'C:\Users\syedz\Documents\Micro Projects\Slideshow Viewer\images\hexa-bg.jpg'
+image_paths = [
+    # List of image paths here
 ]
 
-image_size = (1080, 1080)
+image_size = (736, 512)
 images = [Image.open(path).resize(image_size) for path in image_paths]
 photo_images=[ImageTk.PhotoImage(image) for image in images]
 
 label = tk.Label(root)
-label.root()
+label.pack()
 
 def update_image():
     for photo_image in photo_images:
@@ -28,7 +26,7 @@ def update_image():
 slideshow = cycle(photo_images)
 
 def start_slideshow():
-    for _ in range(len(images_paths)):
+    for _ in range(len(image_paths)):
         update_image()
 
 play_button = tk.Button(root, text='Play Slideshow', command=start_slideshow)
